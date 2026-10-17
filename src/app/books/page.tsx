@@ -1,17 +1,20 @@
 import BookCard from "@/app/components/homepage/BookCard";
 import { IBook } from "@/types/Book.type";
+import { env } from "process";
 
 const getBooks = async () => {
-  const response = await fetch(
-    "http://localhost:3000/booksData.json",
+  try {
+      const response = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/booksData.json`,
     { cache: "force-cache" }
   );
 
-  if (!response.ok) {
-    throw new Error("Failed to fetch books");
+  return response.json();
+  } catch (error) {
+    console.error("Error fetching book data:", error);
+    return [];
   }
 
-  return response.json();
 };
 
 const Books = async () => {
