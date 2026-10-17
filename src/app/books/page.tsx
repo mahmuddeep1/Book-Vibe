@@ -5,7 +5,7 @@ import { env } from "process";
 const getBooks = async () => {
   try {
       const response = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/booksData.json`,
+    `http://localhost:3000/booksData.json`,
     { cache: "force-cache" }
   );
 
@@ -39,7 +39,7 @@ const Books = async () => {
 
             <h2 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
               <span className="bg-gradient-to-r from-violet-600 via-fuchsia-500 to-sky-500 bg-clip-text text-transparent">
-                Explor All Books
+                Explore All Books
               </span>
             </h2>
 

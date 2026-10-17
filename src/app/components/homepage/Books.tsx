@@ -4,7 +4,7 @@ import BookCard from "./BookCard";
 const getBooks = async () => {
   try {
       const response = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/booksData.json`,
+    `http://localhost:3000/booksData.json`,
     { cache: "force-cache" }
   );
 
@@ -52,15 +52,14 @@ const Books = async () => {
 
           <p className="text-sm text-slate-500">
             <span className="font-bold text-slate-900">
-              {booksData.length}
+              {booksData.slice(0, 6).length}
             </span>{" "}
             books to explore
           </p>
         </div>
 
-        {/* Book Cards */}
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {booksData.slice(0, 9). map((book: IBook, ind: number) => (
+          {booksData.slice(0, 6). map((book: IBook, ind: number) => (
             <BookCard key={ind} book={book} />
           ))}
         </div>
